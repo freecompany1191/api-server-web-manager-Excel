@@ -44,9 +44,15 @@
     </select>
     
     <!-- 가맹점 엑셀 리스트 -->
-    <select id="mnGrStExcelList" parameterType="map" statementType="CALLABLE" resultMap="mnGrSt">
+    <select id="mnGrStExcelList" parameterType="map" statementType="CALLABLE" resultType="java.util.LinkedHashMap">
         
-        SELECT * FROM MN_GR_ST ORDER BY ST_CODE
+            SELECT ST_CODE, PUT_DATE, PUT_USER_ID, ST_NAME, ST_NAME_APP, ST_OWNER, ST_TEL FROM (
+                SELECT ROWNUM AS RNUM, B.* FROM(
+                    SELECT * FROM MN_GR_ST ORDER BY ST_CODE
+                ) B
+                WHERE <![CDATA[ ROWNUM<=10 ]]>
+            )
+            WHERE <![CDATA[ RNUM>=1 ]]>
         
     </select>
     

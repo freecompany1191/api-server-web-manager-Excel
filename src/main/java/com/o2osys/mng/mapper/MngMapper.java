@@ -1,6 +1,7 @@
 package com.o2osys.mng.mapper;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -37,6 +38,6 @@ public interface MngMapper {
      * @param map
      * @return
      */
-    ArrayList<MnGrSt> mnGrStExcelList(Map<String, Object> map);
+    ArrayList<LinkedHashMap<String, Object>> mnGrStExcelList(Map<String, Object> map);
 
 }

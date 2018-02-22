@@ -69,9 +69,32 @@ public class CommonUtils {
         return formatStr;
     }
 
+    /**
+     * 날짜 형식 변경
+     * yyyyMMddHHmmss -> yyyy-MM-dd HH:mm:ss
+     * @Method Name : strToDate
+     * @param strDate
+     * @return
+     */
+    public static String localToDate(LocalDateTime toDate, String pattern) throws Exception{
+
+        if(toDate == null){
+            return null;
+        }
+
+        DateTimeFormatter formater;
+
+        if(pattern != null) formater = DateTimeFormatter.ofPattern(pattern, Locale.KOREA);
+        else                formater = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss", Locale.KOREA);
+
+        String formatStr = formater.format(toDate);
+
+        return formatStr;
+    }
+
 
     /**
-     * 배달대행 공통 전문 헤더 설정
+     * 공통 전문 헤더 설정
      *
      * @Method Name : getHeader
      * @return

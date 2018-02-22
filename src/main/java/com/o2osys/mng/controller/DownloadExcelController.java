@@ -33,7 +33,7 @@ public class DownloadExcelController {
     private Map<String, Object> getDefaultMap() {
         Map<String, Object> map = new HashMap<>();
         map.put(ExcelConfig.FILE_NAME, "default_excel");
-        map.put(ExcelConfig.HEAD,Arrays.asList("ID", "NAME", "COMMENT"));
+        map.put(ExcelConfig.HEADER,Arrays.asList("ID", "NAME", "COMMENT"));
         map.put(ExcelConfig.BODY,
                 Arrays.asList(
                         Arrays.asList("A", "a", "가"),

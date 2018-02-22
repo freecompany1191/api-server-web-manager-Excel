@@ -1,6 +1,7 @@
 package com.o2osys.mng.controller;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.o2osys.mng.common.service.CommonService;
@@ -72,6 +74,20 @@ public class MngController {
 
         log.info("#ResMnGrStList : "+CommonUtils.jsonStringFromObject(result));
         return result;
+
+    }
+
+
+    @ApiOperation(value = "엑셀 테스트", notes = "엑셀 테스트")
+    //    @RequestMapping(value = "/mngrsts", method = RequestMethod.GET)
+    @GetMapping(path = "/exceltest")
+    public ModelAndView excelTest(
+
+            ) throws Exception {
+
+        Map<String, Object> insMap = mngMapperSrvice.mnGrStExcelList();
+
+        return new ModelAndView("excelXlsxView", insMap);
 
     }
 
